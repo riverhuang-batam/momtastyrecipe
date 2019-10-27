@@ -21,7 +21,7 @@ const App = () => {
     const [search,
         setSearch] = useState('')
     const [query,
-        setQuery] = useState('best')
+        setQuery] = useState('')
     useEffect(() => {
         getRecipes()
     }, [query])
@@ -44,13 +44,14 @@ const App = () => {
     return (
         <div>
             <Container>
-                <p className="text-center"style={{fontSize:"40px",fontStyle:"italic"}}>Welcome to MomTastyRecipe</p>
-                <Form onSubmit={getSearch}>
+                <p className="text-center mt-4"style={{fontSize:"40px",fontStyle:"italic"}}>Welcome to MomTastyRecipe</p>
+                <p className="text-center"style={{fontSize:"30px",fontStyle:"italic"}}>Make Delicious Food for your family with this recipe</p>
+                <Form onSubmit={getSearch} className="mt-4 mb-4">
 
                     <InputGroup>
-                        <Input placeholder="search" type="text" value={search} onChange={updateSearch}/>
+                        <Input placeholder="Chicken, Steak, Banana, Cake" type="text" value={search} onChange={updateSearch}/>
                         <InputGroupAddon addonType="append">
-                            <Button type="submit">Search</Button>
+                            <Button body inverse color="success" type="submit">Search</Button>
 
                         </InputGroupAddon>
                     </InputGroup>
