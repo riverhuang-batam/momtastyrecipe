@@ -73,8 +73,7 @@ const App = () => {
                     ))}
                 </Row>
                 </Container>
-            
-
+            <p className="text-center">copyright © Term|MomTastyRecipe made by River. All Rights Reserved.</p>
         </div>
     )
 }
