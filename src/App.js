@@ -27,7 +27,7 @@ const App = () => {
     }, [query])
 
     const getRecipes = async() => {
-        const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&from=0&to=25&calories=591-722&health=alcohol-free`)
+        const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&from=0&to=30&calories=591-722&health=alcohol-free`)
         const data = await response.json()
         setRecipes(data.hits)
         console.log(data.hits)
