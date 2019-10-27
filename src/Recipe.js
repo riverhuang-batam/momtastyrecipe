@@ -1,19 +1,24 @@
 import React from 'react'
-import {Row, Col, Container} from 'reactstrap'
+import {Row, Col, Container, CardBody} from 'reactstrap'
 
 const Recipe = ({title, calories, image, ingredients}) => {
     return (
+
         <div>
-            <h1>{title}</h1>
+            
+            <CardBody>
+            <h2 className="text-center">{title}</h2>
+            <img class="center" src={image} alt={image}/>
             <ol>
-                {ingredients.map(ingredient=>(
+                {ingredients.map(ingredient => (
                     <li>{ingredient.text}</li>
                 ))}
             </ol>
-            <p>{calories}</p>
-            <img src={image} alt={image}
-            />
+            <p >Calory: {calories}</p>
+            </CardBody>
+            
         </div>
+
     );
 }
 export default Recipe;

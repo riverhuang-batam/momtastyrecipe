@@ -1,5 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {Form, InputGroupAddon, Button, InputGroup, Input} from 'reactstrap'
+import {
+    Container,
+    Form,
+    InputGroupAddon,
+    Button,
+    InputGroup,
+    Input,
+    Row,
+    Col
+} from 'reactstrap'
+import './index.css'
 import Recipe from './Recipe'
 
 const App = () => {
@@ -8,8 +18,10 @@ const App = () => {
     const APP_KEY = "45a7661269527c96d68e62beed8576ef";
     const [recipes,
         setRecipes] = useState([])
-    const [search, setSearch] = useState('')
-    const [query, setQuery] = useState('best')
+    const [search,
+        setSearch] = useState('')
+    const [query,
+        setQuery] = useState('best')
     useEffect(() => {
         getRecipes()
     }, [query])
@@ -20,32 +32,48 @@ const App = () => {
         setRecipes(data.hits)
         console.log(data.hits)
     }
-    const updateSearch = e =>{
-      setSearch(e.target.value)
-      
+    const updateSearch = e => {
+        setSearch(e.target.value)
+
     }
-    const getSearch = e =>{
+    const getSearch = e => {
         e.preventDefault();
         setQuery(search);
         setSearch('')
     }
     return (
         <div>
-          <Form  onSubmit={getSearch}>
-            <InputGroup>
-                <Input placeholder="search" type="text" value={search} onChange={updateSearch}/>
-                <InputGroupAddon addonType="append">
-                    <Button type="submit">Search</Button>
+            <Container>
+                <p className="text-center"style={{fontSize:"40px",fontStyle:"italic"}}>Welcome to MomTastyRecipe</p>
+                <Form onSubmit={getSearch}>
 
-                </InputGroupAddon>
-            </InputGroup>
-            </Form>
-            {recipes.map(recipe => (<Recipe
-                key={recipe.recipe.label}
-                title={recipe.recipe.label}
-                calories={recipe.recipe.calories}
-                image={recipe.recipe.image}
-                ingredients={recipe.recipe.ingredients}/>))}
+                    <InputGroup>
+                        <Input placeholder="search" type="text" value={search} onChange={updateSearch}/>
+                        <InputGroupAddon addonType="append">
+                            <Button type="submit">Search</Button>
+
+                        </InputGroupAddon>
+                    </InputGroup>
+                </Form>
+            </Container>
+
+            
+                <Container>
+                <Row>
+                    {recipes.map(recipe => (
+                        <Col md="4">
+                            <Recipe
+                                key={recipe.recipe.label}
+                                title={recipe.recipe.label}
+                                calories={recipe.recipe.calories}
+                                image={recipe.recipe.image}
+                                ingredients={recipe.recipe.ingredients}/>
+                        </Col>
+                    ))}
+                </Row>
+                </Container>
+            
+
         </div>
     )
 }
